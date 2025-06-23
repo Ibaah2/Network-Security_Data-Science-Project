@@ -38,3 +38,28 @@ conda deactivate
 
 ## Logging and Exception Handling
 
+### Logging
+This project includes a structured logging setup to track events and support debugging throughout the data pipeline. Each run of the project generates a timestamped log file stored in a dedicated logs/ directory.
+
+Key Features
+Automatically creates a separate log file for every execution
+Organizes logs in a central logs/ folder
+Includes useful details in each log entry, such as:
+-Timestamp
+-Line number
+-Module or script name
+-Log level (INFO, WARNING, ERROR, etc.), INFO was used in this project
+-Descriptive message
+
+### Exception handling
+This project includes a custom exception class designed to capture detailed error information during execution. It is fully integrated with the logging system.
+
+Tracks exactly where and why an error occurred
+
+Captures:
+- File name
+- Line number
+- Error message
+
+Logs all exception-related events for better debugging and analysis
+

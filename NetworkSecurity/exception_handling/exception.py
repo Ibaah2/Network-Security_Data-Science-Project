@@ -25,4 +25,4 @@ if __name__ == '__main__':
     except Exception as e:
         logger.logging.info('Enter the exception block')
         raise NetworkSecurityException(e, sys)
-    logger.logging.info('Exit the try - exception block')
+        
