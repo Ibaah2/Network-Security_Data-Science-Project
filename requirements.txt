@@ -5,4 +5,7 @@ pymongo
 scikit-learn==1.2.2
 scipy==1.10.1
 certifi
+dill
+pyyaml
+
 #-e . 

@@ -24,7 +24,11 @@ Restart VS code and run "where conda" or "conda --version" in the command promt 
 
 If conda is still not working, make sure to open the anaconda prompt on your local computer, then change the working directory to the existing folder you are working in.
 
-Restart VS code and run those commands
+Restart VS code, activate conda and run those commands
+
+## Activate conda with:
+C:\ProgramData\anaconda3\Scripts\activate
+conda activate base
 
 ## Now, lets create the environmet
 conda create -p venv python==3.10

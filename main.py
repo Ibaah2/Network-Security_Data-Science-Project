@@ -1,4 +1,6 @@
 from NetworkSecurity.components.data_ingestion import DataIngestion
+from NetworkSecurity.components.data_validation import DataValidation
+from NetworkSecurity.entity.config_entity import DataValidationConfig
 from NetworkSecurity.entity.config_entity import DataIngestionConfig, TrainingPipelineConfig    
 from NetworkSecurity.entity.artifact_entity import DataIngestionArtifact
 from NetworkSecurity.exception_handling.exception import NetworkSecurityException
@@ -28,6 +30,10 @@ if __name__ == "__main__":
     logging.info("Starting the data ingestion process...")
 
     try:
+        ################################
+        # Data Ingestion
+        ################################
+
         # Initialize the training pipeline configuration
         training_pipeline_config = TrainingPipelineConfig()
         # Initialize the data ingestion configuration
@@ -35,9 +41,22 @@ if __name__ == "__main__":
         # Create an instance of DataIngestion
         data_ingestion = DataIngestion(data_ingestion_config=data_ingestion_config)
         # Extract data and get the artifact
+        logging.info("Initiating data ingestion...")
         data_ingestion_artifact = data_ingestion.initiate_data_ingestion()
+        logging.info(f"Data Ingestion Completed")
 
-        logging.info(f"Data Ingestion Artifact: {data_ingestion_artifact}")
+        ################################
+        # Data Validation
+        ################################
 
+        data_validation_config = DataValidationConfig(training_pipeline_config=training_pipeline_config)
+        # Create an instance of DataValidation
+        data_validation = DataValidation(data_ingestion_artifact=data_ingestion_artifact,
+                                          data_validation_config=data_validation_config)
+        # Initialize the data validation configuration
+        logging.info("Initializing data validation configuration...")
+        data_validation_artifact = data_validation.initiate_data_validation()
+        logging.info("Data validation completed successfully.")
+        
     except Exception as e:
         raise NetworkSecurityException(e, sys)
