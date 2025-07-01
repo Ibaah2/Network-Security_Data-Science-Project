@@ -182,6 +182,15 @@ class DataValidation:
 
             dir_path = os.path.dirname(self.data_validation_config.valid_test_file_path)
             os.makedirs(dir_path, exist_ok=True)
-            test_dataframe.to_csv(self.data_validation_config.valid_test_file_path, index=False, header=True)       
+            test_dataframe.to_csv(self.data_validation_config.valid_test_file_path, index=False, header=True)
+
+            return DataValidationArtifact(
+                validation_status=status,
+                valid_train_file_path=self.data_validation_config.valid_train_file_path,
+                valid_test_file_path=self.data_validation_config.valid_test_file_path,
+                invalid_train_file_path=self.data_validation_config.invalid_train_file_path,
+                invalid_test_file_path=self.data_validation_config.invalid_test_file_path,
+                drift_report_file_path=self.data_validation_config.drift_report_file_path
+            )       
         except Exception as e:
             raise NetworkSecurityException(e, sys)
