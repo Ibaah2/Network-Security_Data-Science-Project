@@ -7,5 +7,6 @@ scipy==1.10.1
 certifi
 dill
 pyyaml
+xgboost
 
 #-e . 

@@ -6,6 +6,9 @@ from NetworkSecurity.entity.config_entity import DataIngestionConfig, TrainingPi
 from NetworkSecurity.entity.artifact_entity import DataIngestionArtifact
 from NetworkSecurity.exception_handling.exception import NetworkSecurityException
 from NetworkSecurity.logging.logger import logging
+
+from NetworkSecurity.components.model_trainer import ModelTrainer
+from NetworkSecurity.entity.config_entity import ModelTrainerConfig
 import os
 import sys
 import numpy as np
@@ -70,6 +73,16 @@ if __name__ == "__main__":
         logging.info("Initiating data transformation...")
         data_transformation_artifact = data_transformation.initiate_data_transformation()
         logging.info("Data transformation completed successfully.")
+
+        ################################
+        # Model Training, Evaluation, and Hyperparameter Tuning
+        ################################
+        logging.info("Starting model training...")
+        model_trainer_config = ModelTrainerConfig(training_pipeline_config=training_pipeline_config)
+        model_trainer = ModelTrainer(data_transformation_artifact=data_transformation_artifact,
+                                       data_model_trainer_config=model_trainer_config)
+        model_trainer_artifact = model_trainer.initiate_model_trainer()
+        logging.info("Model training completed successfully.")       
         
     except Exception as e:
         raise NetworkSecurityException(e, sys)
