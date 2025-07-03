@@ -22,6 +22,9 @@ from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier,
 from xgboost import XGBClassifier
 from sklearn.neighbors import KNeighborsClassifier
 
+import mlflow
+from mlflow.models.signature import infer_signature
+
 class ModelTrainer:
     """
     This class is responsible for training the machine learning model.
@@ -41,6 +44,28 @@ class ModelTrainer:
             self.data_transformation_artifact = data_transformation_artifact
         except Exception as e:
             raise NetworkSecurityException(e, sys)
+        
+    def track_mlflow(self, X_train, best_model, classification_metric):
+        with mlflow.start_run():
+            accuracy=classification_metric.accuracy
+            precision=classification_metric.precision
+            recall=classification_metric.recall
+            f1_score=classification_metric.f1_score
+            roc_auc=classification_metric.roc_auc
+
+            # Log metrics
+            mlflow.log_metric('accuracy', accuracy)
+            mlflow.log_metric('precision', precision)
+            mlflow.log_metric('recall', recall)
+            mlflow.log_metric('f1_score', f1_score)
+            mlflow.log_metric('roc_auc', roc_auc)
+
+            # Log best model
+            signature = infer_signature(X_train, best_model.predict(X_train))
+            input_example = X_train[:1]
+            mlflow.sklearn.log_model(sk_model=best_model, name='model',
+                                     input_example=input_example,
+                                     signature=signature)
         
     def train_model(self, X_train: np.ndarray, y_train: np.ndarray, X_test: np.ndarray, y_test: np.ndarray):
         """
@@ -104,6 +129,12 @@ class ModelTrainer:
             )
             logging.info(f"Train classification metrics: {train_classifcation_metrics}")
             logging.info(f"Test classification metrics: {test_classification_metrics}")
+
+            # Track the experiemnts with MLFlow
+            # On Train
+            self.track_mlflow(X_train, best_model, train_classifcation_metrics)
+            # On Test
+            self.track_mlflow(X_test, best_model, test_classification_metrics)
 
             processor = load_object(
                 file_path=self.data_transformation_artifact.transformed_object_file_path)
