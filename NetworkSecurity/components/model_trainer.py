@@ -148,6 +148,9 @@ class ModelTrainer:
                 obj=Network_Model
             )
 
+            # Save best model to final_model folder
+            save_object(file_path = 'final_model/model.pkl', obj = best_model)
+
             # Create a model artifact
 
             ModelTrainerArtifact(

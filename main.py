@@ -6,6 +6,7 @@ from NetworkSecurity.entity.config_entity import DataIngestionConfig, TrainingPi
 from NetworkSecurity.entity.artifact_entity import DataIngestionArtifact
 from NetworkSecurity.exception_handling.exception import NetworkSecurityException
 from NetworkSecurity.logging.logger import logging
+from NetworkSecurity.utils.aws_utils.aws_utils import upload_folder_to_s3
 
 from NetworkSecurity.components.model_trainer import ModelTrainer
 from NetworkSecurity.entity.config_entity import ModelTrainerConfig
@@ -22,6 +23,10 @@ load_dotenv()
 username = os.getenv("MONGO_USERNAME")
 password = os.getenv("MONGO_PASSWORD")  
 cluster = os.getenv("MONGO_CLUSTER")
+
+# S3
+bucket_name = os.getenv("BUCKET_NAME")
+region = os.getenv("REGION")
 
 uri = f"mongodb+srv://{username}:{password}@{cluster}/?retryWrites=true&w=majority&appName=Cluster0"
 
@@ -82,7 +87,14 @@ if __name__ == "__main__":
         model_trainer = ModelTrainer(data_transformation_artifact=data_transformation_artifact,
                                        data_model_trainer_config=model_trainer_config)
         model_trainer_artifact = model_trainer.initiate_model_trainer()
-        logging.info("Model training completed successfully.")       
+        logging.info("Model training completed successfully.")  
+
+        ################################
+        # Upload Artifacts and Model to S3
+        ################################
+        logging.info("Uploading final_model and Artifacts to S3...")
+        bucket_name = bucket_name  
+
         
     except Exception as e:
         raise NetworkSecurityException(e, sys)

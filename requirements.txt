@@ -9,5 +9,8 @@ dill
 pyyaml
 xgboost
 mlflow
+boto3
+fastapi
+uvicorn
 
 #-e . 

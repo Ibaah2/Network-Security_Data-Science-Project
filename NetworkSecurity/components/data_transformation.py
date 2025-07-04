@@ -129,6 +129,9 @@ class DataTransformation:
             save_object(file_path=self.data_transformation_config.transformed_object_file_path, 
                         obj=processor_object)
             
+            # Save preprocessor_object or KNN Imputer to final_model folder
+            save_object(file_path = 'final_model/preprocessor.pkl', obj=processor_object)
+            
             logging.info("Data transformation completed successfully.")
 
             # Create and return the DataTransformationArtifact

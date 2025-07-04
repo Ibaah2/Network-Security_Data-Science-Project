@@ -89,8 +89,8 @@ def save_object(file_path: str, obj: object) -> None:
         with open(file_path, 'wb') as file_obj:            
             pickle.dump(obj, file_obj)
         logging.info(f"Object saved successfully to {file_path}.")
-    except:
-        # Fall to temporary path if existing path does not work
+    # Fall to temporary path if existing path does not work
+    except:        
         temp_path = os.path.join(gettempdir(), 'NetworkSecurity', 'Artifacts')
         os.makedirs(temp_path, exist_ok=True)
         return temp_path
