@@ -27,16 +27,18 @@ If conda is still not working, make sure to open the anaconda prompt on your loc
 Restart VS code, activate conda and run those commands
 
 ## Activate conda with:
-C:\ProgramData\anaconda3\Scripts\activate
-conda activate base
+
+C:\ProgramData\anaconda3\Scripts\activate base
 
 ## Now, lets create the environmet
 conda create -p venv python==3.10
 
 Activate the environment
-conda activate C:\Users\user 1\Documents\My_Learning\Personal_Projects\Network_Security\venv
+
+conda activate "C:\Users\user 1\Documents\My_Learning\Personal_Projects\Network_Security\venv"
 
 Deactivate the environment
+
 conda deactivate
 
 

@@ -1,0 +1,77 @@
+[2025-07-12 03:01:19,943] 44 root - INFO - Initiating data ingestion...
+[2025-07-12 03:01:19,945] 122 root - INFO - Starting data ingestion process.
+[2025-07-12 03:01:21,619] 51 root - INFO - Exporting collection NetworkData from database baah as a DataFrame.
+[2025-07-12 03:01:24,509] 72 root - INFO - Exporting data to feature store at Artifacts\07_12_2025_02_37_47\feature_store\NetworkData.csv.
+[2025-07-12 03:01:24,747] 92 root - INFO - Splitting data into training and testing sets.
+[2025-07-12 03:01:24,758] 100 root - INFO - Training set size: 8844, Testing set size: 2211
+[2025-07-12 03:01:24,966] 108 root - INFO - Data split into training and testing sets successfully.
+[2025-07-12 03:01:24,966] 139 root - INFO - Data ingestion completed successfully.
+[2025-07-12 03:01:24,967] 46 root - INFO - Data Ingestion Completed
+[2025-07-12 03:01:24,996] 62 root - INFO - Initializing data validation configuration...
+[2025-07-12 03:01:24,996] 46 root - INFO - Reading data from Artifacts\07_12_2025_02_37_47\ingested\train.csv.
+[2025-07-12 03:01:25,067] 46 root - INFO - Reading data from Artifacts\07_12_2025_02_37_47\ingested\test.csv.
+[2025-07-12 03:01:25,083] 63 root - INFO - Validating number of columns in the DataFrame.
+[2025-07-12 03:01:25,083] 65 root - INFO - Expected number of columns: 2
+[2025-07-12 03:01:25,083] 66 root - INFO - Actual number of columns: 31
+[2025-07-12 03:01:25,083] 70 root - ERROR - Number of columns mismatch: expected 2, found 31.
+[2025-07-12 03:01:25,085] 63 root - INFO - Validating number of columns in the DataFrame.
+[2025-07-12 03:01:25,085] 65 root - INFO - Expected number of columns: 2
+[2025-07-12 03:01:25,086] 66 root - INFO - Actual number of columns: 31
+[2025-07-12 03:01:25,086] 70 root - ERROR - Number of columns mismatch: expected 2, found 31.
+[2025-07-12 03:01:25,086] 110 root - INFO - Checking for data drift between training and testing datasets.
+[2025-07-12 03:01:25,300] 49 root - INFO - Writing content to YAML file at Artifacts\07_12_2025_02_37_47\data_validation\drift_report\report.yaml.
+[2025-07-12 03:01:25,362] 132 root - INFO - Data drift report: {'having_IP_Address': {'p-value': 0.9943908690886974, 'statistic': 0.009950248756218905, 'drift_status': False}, 'URL_Length': {'p-value': 0.9763752606358573, 'statistic': 0.011307100859339666, 'drift_status': False}, 'Shortining_Service': {'p-value': 0.9876237011526984, 'statistic': 0.010628674807779286, 'drift_status': False}, 'having_At_Symbol': {'p-value': 1.0, 'statistic': 0.0011307100859339666, 'drift_status': False}, 'double_slash_redirecting': {'p-value': 0.9876237011526984, 'statistic': 0.010628674807779286, 'drift_status': False}, 'Prefix_Suffix': {'p-value': 1.0, 'statistic': 0.003957485300768883, 'drift_status': False}, 'having_Sub_Domain': {'p-value': 0.5421037469854307, 'statistic': 0.018995929443690638, 'drift_status': False}, 'SSLfinal_State': {'p-value': 0.9999510909578456, 'statistic': 0.007575757575757576, 'drift_status': False}, 'Domain_registeration_length': {'p-value': 0.30069208066414804, 'statistic': 0.023066485753052916, 'drift_status': False}, 'Favicon': {'p-value': 1.0, 'statistic': 0.0013568521031207597, 'drift_status': False}, 'port': {'p-value': 0.9999999489728584, 'statistic': 0.005992763455450022, 'drift_status': False}, 'HTTPS_token': {'p-value': 0.9993864328065777, 'statistic': 0.008593396653098146, 'drift_status': False}, 'Request_URL': {'p-value': 0.6049845433946239, 'statistic': 0.018091361374943465, 'drift_status': False}, 'URL_of_Anchor': {'p-value': 0.9970105474352128, 'statistic': 0.009497964721845319, 'drift_status': False}, 'Links_in_tags': {'p-value': 0.653006152591551, 'statistic': 0.017412935323383085, 'drift_status': False}, 'SFH': {'p-value': 0.9999999977781104, 'statistic': 0.005540479421076436, 'drift_status': False}, 'Submitting_to_email': {'p-value': 0.9999999999997877, 'statistic': 0.0046359113523292625, 'drift_status': False}, 'Abnormal_URL': {'p-value': 0.7710771491561995, 'statistic': 0.015716870194482136, 'drift_status': False}, 'Redirect': {'p-value': 1.0, 'statistic': 0.0018091361374943465, 'drift_status': False}, 'on_mouseover': {'p-value': 0.9964705532516113, 'statistic': 0.009611035730438715, 'drift_status': False}, 'RightClick': {'p-value': 1.0, 'statistic': 0.0027137042062415195, 'drift_status': False}, 'popUpWidnow': {'p-value': 1.0, 'statistic': 0.00033921302578018993, 'drift_status': False}, 'Iframe': {'p-value': 1.0, 'statistic': 0.0037313432835820895, 'drift_status': False}, 'age_of_domain': {'p-value': 0.4965219237945278, 'statistic': 0.01967435549525102, 'drift_status': False}, 'DNSRecord': {'p-value': 0.8493635963755504, 'statistic': 0.014473089099954772, 'drift_status': False}, 'web_traffic': {'p-value': 0.9999760319468036, 'statistic': 0.007349615558570783, 'drift_status': False}, 'Page_Rank': {'p-value': 0.9999998996954222, 'statistic': 0.006105834464043419, 'drift_status': False}, 'Google_Index': {'p-value': 1.0, 'statistic': 0.00011307100859339665, 'drift_status': False}, 'Links_pointing_to_page': {'p-value': 0.9844261985874094, 'statistic': 0.010854816824966078, 'drift_status': False}, 'Statistical_report': {'p-value': 1.0, 'statistic': 0.002261420171867933, 'drift_status': False}, 'Result': {'p-value': 1.0, 'statistic': 0.0014699231117141565, 'drift_status': False}}
+[2025-07-12 03:01:25,593] 64 root - INFO - Data validation completed successfully.
+[2025-07-12 03:01:25,593] 43 root - INFO - DataTransformation class initialized successfully.
+[2025-07-12 03:01:25,594] 81 root - INFO - Initiating data transformation...
+[2025-07-12 03:01:25,594] 99 root - INFO - Starting data transformation process.
+[2025-07-12 03:01:25,594] 59 root - INFO - Reading data from Artifacts\07_12_2025_02_37_47\data_validation\validated\train.csv.
+[2025-07-12 03:01:25,659] 59 root - INFO - Reading data from Artifacts\07_12_2025_02_37_47\data_validation\validated\test.csv.
+[2025-07-12 03:01:25,688] 75 root - INFO - Creating data transformation pipeline with KNN imputer.
+[2025-07-12 03:01:25,688] 82 root - INFO - Data transformation pipeline created successfully.
+[2025-07-12 03:01:25,739] 67 root - INFO - Saving NumPy array to Artifacts\07_12_2025_02_37_47\data_transformation\transformed_train.npy.
+[2025-07-12 03:01:25,742] 67 root - INFO - Saving NumPy array to Artifacts\07_12_2025_02_37_47\data_transformation\transformed_test.npy.
+[2025-07-12 03:01:25,745] 87 root - INFO - Saving object to Artifacts\07_12_2025_02_37_47\data_transformation\transformed_object.pkl.
+[2025-07-12 03:01:25,754] 91 root - INFO - Object saved successfully to Artifacts\07_12_2025_02_37_47\data_transformation\transformed_object.pkl.
+[2025-07-12 03:01:25,754] 87 root - INFO - Saving object to final_model/preprocessor.pkl.
+[2025-07-12 03:01:25,758] 91 root - INFO - Object saved successfully to final_model/preprocessor.pkl.
+[2025-07-12 03:01:25,759] 135 root - INFO - Data transformation completed successfully.
+[2025-07-12 03:01:25,760] 83 root - INFO - Data transformation completed successfully.
+[2025-07-12 03:01:25,760] 94 root - INFO - Starting model training...
+[2025-07-12 03:01:25,761] 182 root - INFO - Loading training and testing data.
+[2025-07-12 03:01:25,761] 135 root - INFO - Loading NumPy array from Artifacts\07_12_2025_02_37_47\data_transformation\transformed_train.npy.
+[2025-07-12 03:01:25,786] 138 root - INFO - NumPy array loaded successfully.
+[2025-07-12 03:01:25,786] 135 root - INFO - Loading NumPy array from Artifacts\07_12_2025_02_37_47\data_transformation\transformed_test.npy.
+[2025-07-12 03:01:25,788] 138 root - INFO - NumPy array loaded successfully.
+[2025-07-12 03:01:25,788] 194 root - INFO - Training and testing data loaded successfully.
+[2025-07-12 03:01:25,790] 176 root - INFO - Training model .....
+[2025-07-12 03:01:30,840] 181 root - INFO - DecisionTreeClassifier best parameters: {'max_depth': 10}
+[2025-07-12 03:01:30,890] 202 root - INFO - DecisionTreeClassifier accuracy: 0.7561
+[2025-07-12 03:01:30,890] 176 root - INFO - Training model .....
+[2025-07-12 03:01:41,875] 181 root - INFO - RandomForestClassifier best parameters: {'max_depth': 10, 'n_estimators': 200}
+[2025-07-12 03:01:45,282] 202 root - INFO - RandomForestClassifier accuracy: 0.8056
+[2025-07-12 03:01:45,295] 176 root - INFO - Training model .....
+[2025-07-12 03:02:09,146] 181 root - INFO - GradientBoostingClassifier best parameters: {'learning_rate': 1.0, 'n_estimators': 200}
+[2025-07-12 03:02:14,512] 202 root - INFO - GradientBoostingClassifier accuracy: 0.8680
+[2025-07-12 03:02:14,513] 176 root - INFO - Training model .....
+[2025-07-12 03:02:46,299] 181 root - INFO - AdaBoostClassifier best parameters: {'learning_rate': 1.0, 'n_estimators': 200}
+[2025-07-12 03:02:53,114] 202 root - INFO - AdaBoostClassifier accuracy: 0.7579
+[2025-07-12 03:02:53,126] 176 root - INFO - Training model .....
+[2025-07-12 03:03:05,520] 181 root - INFO - XGBClassifier best parameters: {'learning_rate': 1.0, 'n_estimators': 50}
+[2025-07-12 03:03:05,822] 202 root - INFO - XGBClassifier accuracy: 0.8790
+[2025-07-12 03:03:05,823] 176 root - INFO - Training model .....
+[2025-07-12 03:03:10,475] 181 root - INFO - KNeighborsClassifier best parameters: {'n_neighbors': 3}
+[2025-07-12 03:03:14,052] 202 root - INFO - KNeighborsClassifier accuracy: 0.7744
+[2025-07-12 03:03:14,052] 109 root - INFO - Model report: {'DecisionTreeClassifier': 0.7560894080878022, 'RandomForestClassifier': 0.8056050921602033, 'GradientBoostingClassifier': 0.8679581758069306, 'AdaBoostClassifier': 0.757923322312706, 'XGBClassifier': 0.878961661156353, 'KNeighborsClassifier': 0.7744285503368397}
+[2025-07-12 03:03:14,098] 123 root - INFO - Calculating classification metrics for train and test data.
+[2025-07-12 03:03:14,098] 19 root - INFO - Calculating classification metrics.
+[2025-07-12 03:03:14,151] 19 root - INFO - Calculating classification metrics.
+[2025-07-12 03:03:14,173] 130 root - INFO - Train classification metrics: ClassificationMetricArtifact(accuracy=0.9881275440976933, precision=0.9864701130856219, recall=0.9922811293926468, f1_score=0.9893670886075949, roc_auc=0.9875968258541913)
+[2025-07-12 03:03:14,173] 131 root - INFO - Test classification metrics: ClassificationMetricArtifact(accuracy=0.9701492537313433, precision=0.9709677419354839, recall=0.9756888168557536, f1_score=0.9733225545675019, roc_auc=0.9694206622661573)
+[2025-07-12 03:03:42,250] 112 root - INFO - Loading object from Artifacts\07_12_2025_02_37_47\data_transformation\transformed_object.pkl.
+[2025-07-12 03:03:42,252] 115 root - INFO - Object loaded successfully.
+[2025-07-12 03:03:42,253] 87 root - INFO - Saving object to Artifacts\07_12_2025_02_37_47\model_trainer\model.pkl.
+[2025-07-12 03:03:42,263] 87 root - INFO - Saving object to final_model/model.pkl.
+[2025-07-12 03:03:42,268] 91 root - INFO - Object saved successfully to final_model/model.pkl.
+[2025-07-12 03:03:42,273] 200 root - INFO - Model training completed successfully.
+[2025-07-12 03:03:42,273] 99 root - INFO - Model training completed successfully.
